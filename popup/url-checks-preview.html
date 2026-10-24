@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebGuard URL-check preview (test only)</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="url-checks-preview.js" type="module"></script>
+    <style>
+      body {
+        width: min(760px, 100%);
+        max-width: 760px;
+        min-width: 320px;
+        margin: 0 auto;
+      }
+
+      main {
+        display: grid;
+        gap: 12px;
+        padding: 16px 0;
+      }
+
+      .preview-case {
+        padding: 12px;
+      }
+
+      .preview-case h2 {
+        margin: 0 0 8px;
+        font-size: 13px;
+      }
+
+      .preview-case code {
+        color: var(--muted);
+        overflow-wrap: anywhere;
+      }
+
+      .preview-notice {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .preview-notice[data-result="pass"] {
+        color: #70dca3;
+      }
+
+      .preview-notice[data-result="fail"] {
+        color: #ff8a8a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <span class="brand">
+          <span class="brand-name">Web<span>Guard</span></span>
+        </span>
+        <span class="foundation-badge">TEST ONLY</span>
+      </header>
+      <main>
+        <section class="panel preview-case">
+          <h1>Local URL-check rendering preview</h1>
+          <p class="preview-notice">
+            Test-only display. These reserved sample URLs are parsed in memory;
+            this page does not navigate, make requests, or produce a security
+            verdict.
+          </p>
+        </section>
+        <div id="preview-cases" aria-live="polite"></div>
+      </main>
+    </div>
+  </body>
+</html>

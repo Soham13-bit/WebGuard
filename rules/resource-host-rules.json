@@ -1,0 +1,127 @@
+{
+  "formatVersion": 1,
+  "generatedAt": "2026-10-12T06:38:18.059Z",
+  "expiresAt": "2026-10-16T06:21:00.000Z",
+  "sourceRevision": "b808ee7c845ca171108ea97d35a0d9e062ace132",
+  "sources": [
+    {
+      "name": "EasyList",
+      "url": "https://raw.githubusercontent.com/easylist/easylist/b808ee7c845ca171108ea97d35a0d9e062ace132/easylist/easylist_adservers.txt",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132",
+      "lastModified": "2026-10-12T06:21:00.000Z",
+      "expiresAt": "2026-10-16T06:21:00.000Z"
+    },
+    {
+      "name": "EasyPrivacy",
+      "url": "https://raw.githubusercontent.com/easylist/easylist/b808ee7c845ca171108ea97d35a0d9e062ace132/easyprivacy/easyprivacy_trackingservers_general.txt",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132",
+      "lastModified": "2026-10-12T06:21:00.000Z",
+      "expiresAt": "2026-10-16T06:21:00.000Z"
+    }
+  ],
+  "rules": [
+    {
+      "domain": "000491b06a.com",
+      "source": "EasyList",
+      "rule": "||000491b06a.com^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "0017c6c37c.com",
+      "source": "EasyList",
+      "rule": "||0017c6c37c.com^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "0019x.com",
+      "source": "EasyList",
+      "rule": "||0019x.com^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "00427011ae.com",
+      "source": "EasyList",
+      "rule": "||00427011ae.com^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "00609c257b.com",
+      "source": "EasyList",
+      "rule": "||00609c257b.com^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "00px.net",
+      "source": "EasyPrivacy",
+      "rule": "||00px.net^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "18wosx.ru",
+      "source": "EasyPrivacy",
+      "rule": "||18wosx.ru^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "1bliq.io",
+      "source": "EasyPrivacy",
+      "rule": "||1bliq.io^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "1epc8o1tg9zz.com",
+      "source": "EasyPrivacy",
+      "rule": "||1epc8o1tg9zz.com^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "26sgmin39.de",
+      "source": "EasyPrivacy",
+      "rule": "||26sgmin39.de^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "ad.doubleclick.net",
+      "source": "EasyList",
+      "rule": "||ad.doubleclick.net^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "bidswitch.net",
+      "source": "EasyPrivacy",
+      "rule": "||bidswitch.net^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "bluekai.com",
+      "source": "EasyPrivacy",
+      "rule": "||bluekai.com^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "demdex.net",
+      "source": "EasyPrivacy",
+      "rule": "||demdex.net^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "everesttech.net",
+      "source": "EasyPrivacy",
+      "rule": "||everesttech.net^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "fls.doubleclick.net",
+      "source": "EasyList",
+      "rule": "||fls.doubleclick.net^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    },
+    {
+      "domain": "g.doubleclick.net",
+      "source": "EasyList",
+      "rule": "||g.doubleclick.net^",
+      "revision": "b808ee7c845ca171108ea97d35a0d9e062ace132"
+    }
+  ],
+  "checksum": "89dd810280ee0b5e5503b7ece414858be4635d8c375dd2d299dc9607ea0d9129"
+}

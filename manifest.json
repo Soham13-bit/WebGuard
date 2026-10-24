@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "WebGuard",
+  "version": "1.0.0",
+  "description": "A privacy-conscious foundation for future website security insights.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "webNavigation",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "WebGuard",
+    "default_popup": "popup/popup.html"
+  }
+}

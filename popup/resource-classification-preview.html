@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebGuard resource-classification preview (test only)</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="resource-classification-preview.js" type="module"></script>
+    <style>
+      body {
+        width: min(760px, 100%);
+        max-width: 760px;
+        min-width: 320px;
+        margin: 0 auto;
+      }
+
+      main {
+        display: grid;
+        gap: 12px;
+        padding: 16px 0;
+      }
+
+      .preview-case {
+        padding: 12px;
+      }
+
+      .preview-case h1 {
+        margin: 0 0 8px;
+        font-size: 14px;
+      }
+
+      .preview-notice {
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <span class="brand">
+          <span class="brand-name">Web<span>Guard</span></span>
+        </span>
+        <span class="foundation-badge">TEST ONLY</span>
+      </header>
+      <main>
+        <section class="panel preview-case">
+          <h1>Local resource-host classification preview</h1>
+          <p class="preview-notice">
+            Synthetic hostnames are checked against the bundled rules in memory.
+            This preview does not inspect the active tab, navigate to a test
+            host, contact a host, or produce a security verdict.
+          </p>
+          <p id="preview-summary" class="preview-notice">Loading bundled rules…</p>
+        </section>
+        <section class="page-signals-summary panel preview-case">
+          <span class="eyebrow">SYNTHETIC HOSTS</span>
+          <ul id="preview-classifications" class="host-classification-list"></ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

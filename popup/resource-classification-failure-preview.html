@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebGuard ruleset failure preview (test only)</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="resource-classification-failure-preview.js" type="module"></script>
+    <style>
+      body {
+        width: min(760px, 100%);
+        max-width: 760px;
+        min-width: 320px;
+        margin: 0 auto;
+      }
+
+      main {
+        display: grid;
+        gap: 12px;
+        padding: 16px 0;
+      }
+
+      .preview-case {
+        padding: 12px;
+      }
+
+      .preview-case h1,
+      .preview-case h2 {
+        margin: 0 0 8px;
+        font-size: 14px;
+      }
+
+      .preview-case h2 {
+        margin-top: 16px;
+      }
+
+      .preview-notice,
+      .preview-result {
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.5;
+      }
+
+      .preview-result[data-state="pass"] {
+        color: #7dd3fc;
+      }
+
+      .preview-result[data-state="fail"] {
+        color: #fca5a5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <span class="brand">
+          <span class="brand-name">Web<span>Guard</span></span>
+        </span>
+        <span class="foundation-badge">TEST ONLY</span>
+      </header>
+      <main>
+        <section class="panel preview-case">
+          <h1>Ruleset failure-state preview</h1>
+          <p class="preview-notice">
+            Each case injects an in-memory response into the normal ruleset
+            loader and renderer. Only the valid-bundle case reads the packaged
+            rules file. This separate page does not modify that file, access
+            the active tab, contact test hosts, or change production behavior.
+          </p>
+          <p id="preview-status" class="preview-result" aria-live="polite">
+            Running local failure-state checks…
+          </p>
+        </section>
+        <section id="preview-cases" class="page-signals-summary"></section>
+      </main>
+    </div>
+  </body>
+</html>

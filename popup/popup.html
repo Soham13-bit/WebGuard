@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07111f">
+    <title>WebGuard</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="popup.js" type="module"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#overview" data-home aria-label="WebGuard overview">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M12 2.8 20 6v5.5c0 5.1-3.4 8.5-8 10.2-4.6-1.7-8-5.1-8-10.2V6l8-3.2Z"/><path d="m8.5 12.2 2.2 2.2 4.8-5"/></svg>
+          </span>
+          <span class="brand-name">Web<span>Guard</span></span>
+        </a>
+        <span class="foundation-badge"><span aria-hidden="true"></span> FOUNDATION</span>
+      </header>
+
+      <section class="site-summary panel" aria-labelledby="site-title">
+        <div class="site-heading">
+          <div class="site-identity">
+            <span class="site-monogram" aria-hidden="true">◎</span>
+            <div class="site-title-wrap">
+              <p class="eyebrow">ACTIVE WEBSITE</p>
+              <h1 id="site-title" title="Checking active tab">Checking active tab…</h1>
+            </div>
+          </div>
+          <span id="https-badge" class="https-badge" data-state="pending" aria-live="polite">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="https-status">Checking</span>
+          </span>
+        </div>
+        <p class="site-url-label">CURRENT URL</p>
+        <p id="site-url" class="site-url" title="Waiting for tab details…" aria-live="polite">Waiting for tab details…</p>
+        <div class="summary-divider"></div>
+        <div class="risk-summary">
+          <span class="risk-label"><span class="risk-icon" aria-hidden="true">◌</span> URL CHECK</span>
+          <span id="url-check-count" class="risk-value">— <span>signals</span></span>
+          <span id="url-check-state" class="analysis-state">CHECKING</span>
+        </div>
+        <p class="score-disclaimer">Local URL indicators only · not a threat verdict</p>
+      </section>
+
+      <div class="workspace">
+        <nav class="side-nav" aria-label="Security dashboard sections" role="tablist" aria-orientation="vertical">
+          <p class="nav-label">DASHBOARD</p>
+          <button class="nav-item is-active" id="nav-overview" type="button" role="tab" aria-selected="true" aria-controls="view-overview" tabindex="0" data-view="overview">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
+            <span>Overview</span>
+          </button>
+          <button class="nav-item" id="nav-url-analysis" type="button" role="tab" aria-selected="false" aria-controls="view-url-analysis" tabindex="-1" data-view="url-analysis">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.4 15.4 4.1 4.1M8.1 10.8h5.4M10.8 8.1v5.4"/></svg>
+            <span>URL Analysis</span>
+          </button>
+          <button class="nav-item" id="nav-ads-trackers" type="button" role="tab" aria-selected="false" aria-controls="view-ads-trackers" tabindex="-1" data-view="ads-trackers">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7.2h16v12H4zM8 7.2V4.8h8v2.4M8 11.5h8M8 15.2h5"/></svg>
+            <span>Ads &amp; Trackers</span>
+          </button>
+          <button class="nav-item" id="nav-cookies-privacy" type="button" role="tab" aria-selected="false" aria-controls="view-cookies-privacy" tabindex="-1" data-view="cookies-privacy">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19.8 12.5a8 8 0 1 1-8.3-8 3 3 0 0 0 4 4 3 3 0 0 0 4.3 4Z"/><path d="M9 12h.01M13 16h.01M7.7 8.5h.01"/></svg>
+            <span>Cookies &amp; Privacy</span>
+          </button>
+          <button class="nav-item" id="nav-website-report" type="button" role="tab" aria-selected="false" aria-controls="view-website-report" tabindex="-1" data-view="website-report">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3.8h8l4 4v12.4H6zM14 3.8v4h4M9 12h6M9 15.5h6"/></svg>
+            <span>Website Report</span>
+          </button>
+          <button class="nav-item" id="nav-exposure-intelligence" type="button" role="tab" aria-selected="false" aria-controls="view-exposure-intelligence" tabindex="-1" data-view="exposure-intelligence">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.4 15.4 4.1 4.1M8 10.8h5.6M10.8 8v5.6"/></svg>
+            <span>Exposure Intel</span>
+          </button>
+          <div class="nav-footer">
+            <span class="nav-footer-dot" aria-hidden="true"></span>
+            <span>Local URL checks<br><strong id="engine-status">Ready</strong></span>
+          </div>
+        </nav>
+
+        <main id="dashboard-panel" class="main-panel">
+          <section class="view is-visible" id="view-overview" role="tabpanel" aria-labelledby="nav-overview">
+            <div class="view-heading">
+              <div><p class="eyebrow">SECURITY POSTURE</p><h2>Overview</h2></div>
+              <span class="view-index">01 / 06</span>
+            </div>
+
+            <div class="overview-status panel">
+              <div class="overview-status-icon" aria-hidden="true">!</div>
+              <div><strong>Local checks only</strong><p>Passive navigation events are observed; no reputation lookup or protection is active.</p></div>
+            </div>
+
+            <div id="overview-risk-results" class="url-risk-panel panel" aria-live="polite"></div>
+            <section class="page-signals-summary panel navigation-history-panel">
+              <span class="eyebrow">PASSIVE NAVIGATION MONITOR</span>
+              <div id="navigation-overview-events" class="navigation-events" aria-live="polite"></div>
+            </section>
+
+            <div class="quick-heading">
+              <h3>Local page signals</h3><span>RUN ON THIS PAGE</span>
+            </div>
+            <button id="run-page-checks" class="run-checks-button" type="button">
+              <span aria-hidden="true">⌕</span> Check page signals
+            </button>
+            <p id="page-check-status" class="page-check-status" aria-live="polite">Page signals have not been checked.</p>
+            <div class="quick-heading quick-heading-secondary">
+              <h3>Feature status</h3><span>LIVE COUNTS AFTER CHECK</span>
+            </div>
+            <div class="quick-grid">
+              <button class="quick-card panel" type="button" data-view="url-analysis">
+                <span class="quick-icon redirect-icon" aria-hidden="true">↗</span>
+                <span class="quick-copy"><strong>Navigation</strong><small id="redirect-status">Loading events…</small></span>
+                <span class="quick-arrow" aria-hidden="true">›</span>
+              </button>
+              <button class="quick-card panel" type="button" data-view="ads-trackers">
+                <span class="quick-icon ads-icon" aria-hidden="true">⌁</span>
+                <span class="quick-copy"><strong>Ads &amp; Trackers</strong><small id="resource-status">Not checked</small></span>
+                <span class="quick-arrow" aria-hidden="true">›</span>
+              </button>
+              <button class="quick-card panel" type="button" data-view="cookies-privacy">
+                <span class="quick-icon privacy-icon" aria-hidden="true">◈</span>
+                <span class="quick-copy"><strong>Cookies &amp; Privacy</strong><small id="consent-status">Not checked</small></span>
+                <span class="quick-arrow" aria-hidden="true">›</span>
+              </button>
+              <button class="quick-card panel" type="button" data-view="website-report">
+                <span class="quick-icon report-icon" aria-hidden="true">▤</span>
+                <span class="quick-copy"><strong>Website Report</strong><small id="report-status">URL checks only</small></span>
+                <span class="quick-arrow" aria-hidden="true">›</span>
+              </button>
+              <button class="quick-card panel" type="button" data-view="exposure-intelligence">
+                <span class="quick-icon exposure-icon" aria-hidden="true">⌕</span>
+                <span class="quick-copy"><strong>Exposure Intel</strong><small>Provider unavailable</small></span>
+                <span class="quick-arrow" aria-hidden="true">›</span>
+              </button>
+            </div>
+            <p class="overview-footnote"><span aria-hidden="true">i</span> Signals describe this page snapshot; they do not identify threats or block content.</p>
+          </section>
+
+          <section class="view" id="view-url-analysis" role="tabpanel" aria-labelledby="nav-url-analysis" hidden>
+            <div class="view-heading">
+              <div><p class="eyebrow">LINK INTELLIGENCE</p><h2>URL Analysis</h2></div>
+              <span class="view-index">02 / 06</span>
+            </div>
+            <p class="section-note">Local structural checks only. This does not check domain reputation or determine whether a site is malicious.</p>
+            <div id="url-risk-results" class="url-risk-panel panel" aria-live="polite"></div>
+            <div id="url-results" class="result-list" aria-live="polite"></div>
+            <div class="page-signals-summary panel navigation-history-panel">
+              <span class="eyebrow">OBSERVED NAVIGATION EVENTS</span>
+              <div id="navigation-analysis-events" class="navigation-events" aria-live="polite"></div>
+              <p id="redirect-result">The on-demand page snapshot can report a navigation timing redirect count.</p>
+              <small>Chrome event monitoring can miss events/details; nothing is blocked. A new tab or redirect alone is not evidence of maliciousness.</small>
+            </div>
+          </section>
+
+          <section class="view" id="view-ads-trackers" role="tabpanel" aria-labelledby="nav-ads-trackers" hidden>
+            <div class="view-heading">
+              <div><p class="eyebrow">PAGE REQUESTS</p><h2>Ads &amp; Trackers</h2></div>
+              <span class="view-index">03 / 06</span>
+            </div>
+            <div class="metric-grid">
+              <div class="metric-card panel"><span>CROSS-ORIGIN RESOURCES</span><strong id="cross-resource-count">—</strong><small>Page snapshot only</small></div>
+              <div class="metric-card panel"><span>DISTINCT HOSTS</span><strong id="cross-host-count">—</strong><small>At most 12 classified</small></div>
+            </div>
+            <div class="page-signals-summary panel">
+              <span class="eyebrow">OBSERVED HOST CLASSIFICATION</span>
+              <p id="host-classification-summary">Run page signal check to classify up to 12 observed hostnames using the bundled rules.</p>
+              <ul id="host-classification-list" class="host-classification-list"><li>Host classifications have not been run.</li></ul>
+            </div>
+            <p class="section-note">Classification matches a conservative subset of EasyList and EasyPrivacy host-wide rules. Unknown or omitted hosts are not known to be safe. WebGuard does not monitor future requests or block content.</p>
+          </section>
+
+          <section class="view" id="view-cookies-privacy" role="tabpanel" aria-labelledby="nav-cookies-privacy" hidden>
+            <div class="view-heading">
+              <div><p class="eyebrow">PRIVACY CONTROLS</p><h2>Cookies &amp; Privacy</h2></div>
+              <span class="view-index">04 / 06</span>
+            </div>
+            <div class="page-signals-summary panel">
+              <span class="eyebrow">VISIBLE CONSENT UI</span>
+              <p id="consent-result">Run page signal check to look for visible cookie/consent interface indicators.</p>
+              <small>This is a DOM heuristic, not a consent or compliance assessment.</small>
+            </div>
+            <div class="page-signals-summary panel">
+              <span class="eyebrow">COOKIE INVENTORY</span>
+              <p id="cookie-inventory-result" aria-live="polite">Run page signal check to list cookie names visible to this page.</p>
+              <ul id="visible-cookie-list" class="host-list"><li>Cookie names have not been checked.</li></ul>
+              <small>Names only; values are discarded. HttpOnly cookies are not visible to page scripts.</small>
+            </div>
+            <p class="section-note">Page signals are read only after you press “Check page signals.”</p>
+          </section>
+
+          <section class="view" id="view-website-report" role="tabpanel" aria-labelledby="nav-website-report" hidden>
+            <div class="view-heading">
+              <div><p class="eyebrow">SECURITY SUMMARY</p><h2>Website Report</h2></div>
+              <span class="view-index">05 / 06</span>
+            </div>
+            <p class="section-note">This local summary is based only on URL structure and the page signals you chose to check. It is not a threat verdict.</p>
+            <div id="report-results" class="report-results panel">
+              <p>No checks are available for this tab yet.</p>
+            </div>
+          </section>
+
+          <section class="view" id="view-exposure-intelligence" role="tabpanel" aria-labelledby="nav-exposure-intelligence" hidden>
+            <div class="view-heading">
+              <div><p class="eyebrow">BREACH AWARENESS</p><h2>Exposure Intelligence</h2></div>
+              <span class="view-index">06 / 06</span>
+            </div>
+            <p class="section-note">Lookups are submitted only when you press the scan button. Available breach intelligence is incomplete and does not include every incident ever reported.</p>
+
+            <div class="exposure-mode-tabs" role="tablist" aria-label="Exposure investigation mode">
+              <button id="exposure-email-tab" class="exposure-mode-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="exposure-email-mode" tabindex="0" data-exposure-mode="email">Email Exposure</button>
+              <button id="exposure-website-tab" class="exposure-mode-tab" type="button" role="tab" aria-selected="false" aria-controls="exposure-website-mode" tabindex="-1" data-exposure-mode="website">Website History</button>
+            </div>
+
+            <section id="exposure-email-mode" class="exposure-mode-panel" role="tabpanel" aria-labelledby="exposure-email-tab">
+              <form id="email-exposure-form" class="exposure-form" novalidate>
+                <label for="email-exposure-input">Email address</label>
+                <input id="email-exposure-input" name="email" type="email" maxlength="254" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="name@example.com">
+                <button class="run-checks-button" type="submit">Check email exposure</button>
+              </form>
+              <p class="exposure-privacy-note">The address is validated locally and is not sent or saved. No approved email provider or backend is configured.</p>
+            </section>
+
+            <section id="exposure-website-mode" class="exposure-mode-panel" role="tabpanel" aria-labelledby="exposure-website-tab" hidden>
+              <form id="website-exposure-form" class="exposure-form" novalidate>
+                <label for="website-exposure-input">Website domain or HTTP(S) URL</label>
+                <input id="website-exposure-input" name="domain" type="text" maxlength="2048" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="example.com">
+                <button id="website-exposure-submit" class="run-checks-button" type="submit">Check breach history</button>
+              </form>
+              <p class="exposure-privacy-note">The domain is validated locally. No provider with approved terms is configured, so it is not sent anywhere and no domain result is available.</p>
+            </section>
+
+            <div id="exposure-results" class="exposure-results panel" role="status" aria-live="polite">
+              <p class="exposure-state-message">Choose an investigation mode and submit a value to begin.</p>
+            </div>
+            <p class="exposure-coverage-note">No match is not a safety verdict. This mode cannot find compromised email addresses for a domain. A future provider must distinguish incidents affecting the website itself from organization-domain matches, related services, and email-domain associations.</p>
+          </section>
+        </main>
+      </div>
+
+      <footer class="disclaimer">
+        <span class="disclaimer-icon" aria-hidden="true">!</span>
+        <p><strong>Foundation build</strong> · WebGuard is not currently providing security protection.</p>
+      </footer>
+    </div>
+  </body>
+</html>

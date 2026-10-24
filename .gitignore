@@ -1,0 +1,47 @@
+# Environment and secret material
+.env
+.env.*
+.envrc
+*.local
+secrets/
+credentials/
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.p7b
+*.p7c
+*.jks
+*.keystore
+
+# Dependencies and generated output
+node_modules/
+vendor/
+coverage/
+dist/
+build/
+.cache/
+
+# Logs and temporary files
+logs/
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.swp
+*.swo
+*~
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.vscode/
+.idea/
